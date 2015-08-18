@@ -15,6 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'vendor/jquery/dist/jquery.min.js',
+      'vendor/underscore/underscore-min.js',
+      'src/js/index.js',
       'spec/**/*-spec.js'
     ],
 
