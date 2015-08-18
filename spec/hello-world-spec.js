@@ -6,6 +6,7 @@ describe('helloWorld', function(){
   });
 
   it('should get server url base on input cityName', function() {
-    expect(getServerUrl('')).toBe('http://location-backend-service.herokuapp.com/locations');
+    expect(getServerUrl('')).
+        toBe('http://location-backend-service.herokuapp.com/locations');
   });
 });
