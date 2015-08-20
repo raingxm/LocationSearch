@@ -24,15 +24,18 @@ describe('Location test', function(){
           '?name=Melbourne');
   });
 
-
-  it('should be true', function() {
-    expect($('#likedPlaces ul li').size()).toBe(1);
-  });
-
   it('click search button should fetch city data from server', function() {
     spyOn(window, 'fetchCity');
     $('#searchButton').click();
     expect(fetchCity).toHaveBeenCalled();
+  });
+
+  it('call renderCity should add city in web page', function() {
+    expect($('#searchResults .results').size()).toBe(1);
+    renderCity({name: 'xian', description: 'nice place'});
+    expect($('#searchResults .results').size()).toBe(2);
+    expect($('#searchResults .results').last().find('h5').text()).toBe('xian');
+    expect($('#searchResults .results').last().find('h6').text()).toBe('nice place');
   });
 
 });

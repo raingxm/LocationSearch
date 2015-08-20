@@ -19,7 +19,7 @@
         $.get(exports.getServerUrl(cityName), function(data) {
             _.each(data, exports.renderCity);
         });
-    }
+    };
 
     exports.renderCity = function(eachCity) {
         var template = _.template('<div class="results"><div class="panel large-12 columns">' +
