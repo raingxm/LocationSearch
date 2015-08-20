@@ -1,3 +1,4 @@
 $(document).ready(function() {
-    var likes = new Likes();
+    var likes = new Like($('#likedPlaces nav ul'));
+
 });

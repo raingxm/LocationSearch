@@ -25,7 +25,7 @@ module.exports = function(config) {
       {pattern: 'spec/fixtures/**/*.html', watched: true, served: true, included: false},
 
       //files to test
-      'src/js/index.js',
+      'src/js/*.js',
       'spec/**/*-spec.js'
     ],
 

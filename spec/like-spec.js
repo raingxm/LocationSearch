@@ -1,11 +1,11 @@
 describe('Location test', function(){
   'use strict';
-
+  var like;
   beforeEach(function() {
     var f = jasmine.getFixtures();
     f.fixturesPath = 'base/spec/fixtures';
     loadFixtures('myfixture.html');
-    init();
+    like = new Like($('#likedPlaces nav ul'));
   });
 
   afterEach(function() {
@@ -14,28 +14,17 @@ describe('Location test', function(){
     f.clearCache();
   });
 
-  it('should get server url base on input cityName', function() {
-    var cityName = '';
-    expect(getServerUrl(cityName)).
-        toBe('http://location-backend-service.herokuapp.com/locations');
-    cityName = 'Melbourne' ;   
-    expect(getServerUrl(cityName)).
-        toBe('http://location-backend-service.herokuapp.com/locations' + 
-          '?name=Melbourne');
+  it('Like section should have add method add like city', function() {
+    expect(like.likes.length).toBe(0);
+    like.add('xian');
+    expect(like.likes.length).toBe(1);
   });
 
-  it('click search button should fetch city data from server', function() {
-    spyOn(window, 'fetchCity');
-    $('#searchButton').click();
-    expect(fetchCity).toHaveBeenCalled();
+  it('Like could render itself', function() {
+    expect($('#likedPlaces nav ul li').size()).toBe(1);
+    like.add('beijing');
+    like.add('xian');
+    like.render();
+    expect($('#likedPlaces nav ul li').size()).toBe(3);
   });
-
-  it('call renderCity should add city in web page', function() {
-    expect($('#searchResults .results').size()).toBe(1);
-    renderCity({name: 'xian', description: 'nice place'});
-    expect($('#searchResults .results').size()).toBe(2);
-    expect($('#searchResults .results').last().find('h5').text()).toBe('xian');
-    expect($('#searchResults .results').last().find('h6').text()).toBe('nice place');
-  });
-
 });
