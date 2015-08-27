@@ -1,4 +1,4 @@
-describe('Location test', function(){
+describe('like test', function(){
   'use strict';
   var like;
   beforeEach(function() {
